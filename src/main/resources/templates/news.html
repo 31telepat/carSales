@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+<style>
+    #cars{
+        width: 50%;
+        border-collapse: collapse;
+    }
+    td{
+        padding: 3px;
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+<header th:replace="~{fragments/header_fragment :: headFragment}"></header>
+
+<div>
+    <form method="post" th:action="@{/saveCar}" th:object="${saveCar}">
+        <table>
+            <td>
+                <input type="text" placeholder="enter model" th:field="*{model}">
+            </td>
+            <td>
+                <input type="text" placeholder="enter year" th:field="*{year}">
+            </td>
+            <td>
+                <input type="text" placeholder="enter owner" th:field="*{users}">
+            </td>
+            <td>
+                <input type="submit" value="save">
+            </td>
+        </table>
+    </form>
+</div>
+
+<table id="cars">
+    <tr>
+        <td>model</td>
+        <td>year</td>
+        <td>owner</td>
+    </tr>
+    <tr th:each="car : ${carlist}">
+        <td th:text="${car.getModel()}"></td>
+        <td th:text="${car.getYear()}"></td>
+        <td th:text="${car.getUsers()}"></td>
+    </tr>
+</table>
+</body>
+</html>

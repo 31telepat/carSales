@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>registration</title>
+    <style>
+        #login_form{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+<header th:replace="~{fragments/header_fragment :: headFragment}"></header>
+<div sec:authorize="isAuthenticated()">
+    <span sec:authentication="name"></span>
+</div>
+<div id="login_form">
+        <form method="post" th:object="${userForm}" th:action="@{/registration}">
+            <input type="text" placeholder="enter name" th:field="*{username}">
+            <input type="password" placeholder="enter password" th:field="*{password}">
+            <input type="password" placeholder="repeat password" th:field="*{passwordConfirm}">
+            <input type="submit" value="save">
+        </form>
+    </div>
+</body>
+</html>
