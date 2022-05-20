@@ -20,18 +20,10 @@
 <div>
     <form method="post" th:action="@{/saveCar}" th:object="${saveCar}">
         <table>
-            <td>
-                <input type="text" placeholder="enter model" th:field="*{model}">
-            </td>
-            <td>
-                <input type="text" placeholder="enter year" th:field="*{year}">
-            </td>
-            <td>
-                <input type="text" placeholder="enter owner" th:field="*{users}">
-            </td>
-            <td>
-                <input type="submit" value="save">
-            </td>
+            <td><input type="text" placeholder="enter model" th:field="*{model}"></td>
+            <td><input type="text" placeholder="enter year" th:field="*{year}"></td>
+            <td><input type="text" placeholder="enter owner" th:field="*{users}"></td>
+            <td><input type="submit" value="save"></td>
         </table>
     </form>
 </div>

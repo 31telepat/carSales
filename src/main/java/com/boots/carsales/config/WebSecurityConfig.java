@@ -25,11 +25,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/news", "/registration").permitAll()
+                .antMatchers("/registration", "/").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
-                    .loginPage("/login")
+                    .loginPage("/")
                     .permitAll()
                     .and()
                 .logout()
@@ -39,8 +39,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    @Override
 //    protected void configure(HttpSecurity httpSecurity) throws Exception {
 //        httpSecurity
-//                .csrf()
-//                .disable()
 //                .authorizeRequests()
 //                //Доступ только для не зарегистрированных пользователей
 //                .antMatchers("/registration").not().fullyAuthenticated()
