@@ -3,18 +3,19 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>loginPage</title>
+    <title>Main page</title>
     <style>
         #login_form{
             position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            right: 0;
         }
     </style>
 </head>
-    <body>
-    <header th:replace="~{fragments/header_fragment :: headFragment}"></header>
+<body>
+<header th:replace="~{fragments/header_fragment :: headFragment}"></header>
+<div sec:authorize="isAuthenticated()">
+    <span sec:authentication="name"></span>
     <div id="login_form">
         <form method="post" th:action="@{/login}">
             <div th:if="${param.error}">
@@ -23,14 +24,18 @@
             <div th:if="${param.logout}">
                 You have been logged out.
             </div>
-            <h3>Войти на сайт</h3>
+            <h4>Войти на сайт</h4>
             <div>
                 <input name="username" type="text" placeholder="Enter your Username">
                 <input name="password" type="password" placeholder="Enter your Password">
                 <button type="submit">Log In</button>
-                <h3><a href="/registration">Зарегистрироваться</a></h3>
+                <h4><a href="/registration">Зарегистрироваться</a></h4>
             </div>
         </form>
     </div>
-    </body>
+    <h4><a href="/logout">Выйти</a></h4>
+    <h4><a href="/news">Новости (только пользователь)</a></h4>
+    <h4><a href="/admin">Пользователи (только админ)</a></h4>
+</div>
+</body>
 </html>

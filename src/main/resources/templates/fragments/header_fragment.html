@@ -4,6 +4,7 @@
 <header th:fragment="headFragment">
     <div>
         <h3 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h3>
+        <h3 th:inline="text">Your Role: [[${#httpServletRequest.userPrincipal}]]</h3>
 
         <a th:href="@{/}">Главная</a>
         <a th:href="@{/login}">Войти</a>
