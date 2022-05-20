@@ -30,7 +30,7 @@ public class CarController {
             model.addAttribute("saveCar", new Car());
             model.addAttribute("deleteCar", new CarToDelete());
             model.addAttribute("carlist", carService.allCars());
-            return "news";
+            return "/";
         }else{
             carService.saveCar(car);
             return "redirect:/";

@@ -10,14 +10,21 @@
             top: 0;
             right: 0;
         }
+        #cars{
+            width: 50%;
+            border-collapse: collapse;
+        }
+        td{
+            padding: 3px;
+            border: 1px solid black;
+        }
     </style>
 </head>
+
 <body>
 <header th:replace="~{fragments/header_fragment :: headFragment}"></header>
-<div sec:authorize="isAuthenticated()">
-    <span sec:authentication="name"></span>
     <div id="login_form">
-        <form method="post" th:action="@{/login}">
+        <form method="post" th:action="@{/}">
             <div th:if="${param.error}">
                 Invalid username and password.
             </div>
@@ -33,9 +40,24 @@
             </div>
         </form>
     </div>
+</div>
     <h4><a href="/logout">Выйти</a></h4>
     <h4><a href="/news">Новости (только пользователь)</a></h4>
     <h4><a href="/admin">Пользователи (только админ)</a></h4>
+</div>
+<div>
+    <table id="cars">
+        <tr>
+            <td>model</td>
+            <td>year</td>
+            <td>owner</td>
+        </tr>
+        <tr th:each="car : ${carList}">
+            <td th:text="${car.getModel()}"></td>
+            <td th:text="${car.getYear()}"></td>
+            <td th:text="${car.getUsers()}"></td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

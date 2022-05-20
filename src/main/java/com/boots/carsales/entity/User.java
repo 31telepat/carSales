@@ -1,6 +1,7 @@
 package com.boots.carsales.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
@@ -12,7 +13,8 @@ import java.util.Set;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "Users")
 public class User implements UserDetails {
 

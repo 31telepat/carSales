@@ -11,7 +11,6 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry){
 //        Для страниц, которые никак не обрабатываются сервером, а просто возвращают страницу
 //Страница login обрабатывается Spring Security контроллером по умолчанию, поэтому для неё отдельный контроллер не требуется
-//        registry.addViewController("/").setViewName("/login");
         registry.addViewController("/news").setViewName("news");
     }
 }
