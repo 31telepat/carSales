@@ -55,7 +55,7 @@
         <tr th:each="car : ${carList}">
             <td th:text="${car.getModel()}"></td>
             <td th:text="${car.getYear()}"></td>
-            <td th:text="${car.getUsers()}"></td>
+            <td th:text="${car.users.getUsername()}"></td>
         </tr>
     </table>
 </div>
