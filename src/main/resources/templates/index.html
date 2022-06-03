@@ -40,17 +40,24 @@
             </div>
         </form>
     </div>
-</div>
-    <h4><a href="/logout">Выйти</a></h4>
-    <h4><a href="/news">Новости (только пользователь)</a></h4>
-    <h4><a href="/admin">Пользователи (только админ)</a></h4>
+<div>
+    <h4>Подать объявление (owner/admin)</h4>
+    <form method="post" th:action="@{/saveCar}" th:object="${saveCar}">
+        <table>
+            <td><input type="text" placeholder="enter model" th:field="*{model}"></td>
+            <td><input type="text" placeholder="enter year" th:field="*{year}"></td>
+            <td><input type="text" placeholder="enter owner" th:field="*{users}"></td>
+            <td><input type="submit" value="save"></td>
+        </table>
+    </form>
 </div>
 <div>
+    <h4>Мы подобрали лучшие объявления для Вас!</h4>
     <table id="cars">
         <tr>
-            <td>model</td>
-            <td>year</td>
-            <td>owner</td>
+            <td><b>model</b></td>
+            <td><b>year</b></td>
+            <td><b>owner</b></td>
         </tr>
         <tr th:each="car : ${carList}">
             <td th:text="${car.getModel()}"></td>

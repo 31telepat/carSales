@@ -7,9 +7,6 @@
 </head>
 <body>
 <header th:replace="~{fragments/header_fragment :: headFragment}"></header>
-<div sec:authorize="isAuthenticated()">
-    <span sec:authentication="name"></span>
-</div>
 Hello! This is admin Page!
 There are a lot of secrets!
 </body>

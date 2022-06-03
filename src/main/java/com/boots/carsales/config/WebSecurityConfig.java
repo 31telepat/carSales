@@ -24,10 +24,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests()
+        http
+                .csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/registration").not().fullyAuthenticated()
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/news").hasAnyRole("USER", "ADMIN")
                 .antMatchers( "/").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
@@ -42,20 +45,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    protected void configure(HttpSecurity httpSecurity) throws Exception {
 //        httpSecurity
 //                .authorizeRequests()
-//                //Доступ только для не зарегистрированных пользователей
+//                                                                      //Доступ только для не зарегистрированных пользователей
 //                .antMatchers("/registration").not().fullyAuthenticated()
-//                //Доступ только для пользователей с ролью Администратор
+//                                                                      //Доступ только для пользователей с ролью Администратор
 //                .antMatchers("/admin/**").hasRole("ADMIN")
 //                .antMatchers("/news").hasRole("USER")
-//                //Доступ разрешен всем пользователей
+//                                                                      //Доступ разрешен всем пользователей
 //                .antMatchers("/", "/resources/**").permitAll()
-//                //Все остальные страницы требуют аутентификации
+//                                                                      //Все остальные страницы требуют аутентификации
 //                .anyRequest().authenticated()
 //                .and()
-//                //Настройка для входа в систему
+//                                                  //Настройка для входа в систему
 //                .formLogin()
-//                .loginPage("/login")
-//                //Перенарпавление на главную страницу после успешного входа
+//                .loginPage("/")
+//                                                  //Перенарпавление на главную страницу после успешного входа
 //                .defaultSuccessUrl("/")
 //                .permitAll()
 //                .and()

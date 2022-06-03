@@ -4,11 +4,11 @@
 <header th:fragment="headFragment">
     <div>
         <h3 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h3>
+        <h4><a href="/logout">Выйти</a></h4>
 
         <a th:href="@{/}">Главная</a>
-        <a th:href="@{/news}">Новости</a>
-        <a th:href="@{/admin}">Панель администратора</a>
         <a th:href="@{/registration}">Регистрация</a>
+        <a th:href="@{/admin}">Панель администратора</a>
     </div>
 </header>
 </body>
